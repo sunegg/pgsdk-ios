@@ -1,10 +1,9 @@
     import Foundation
 
-    class Pgoo: PgooServiceInterface {
+    public class Pgoo: PgooServiceInterface {
         
         var state = PgooState()
         
-//        var gameToken: String?
         var realVerify: Int?
         var config: ConfigResult?
         var initResult: InitResult?
@@ -13,7 +12,7 @@
         static let shared = Pgoo()
 
             private init() {
-                // Private initialization to ensure just one instance is created.
+               
             }
 
         var headers: [String: String] = ["game_id": String(PgooConfigs.gameId), "locale": PgooConfigs.locale]
@@ -26,8 +25,6 @@
             guard let url = URL(string: url) else { return }
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
-
-            // Merge class headers with request headers
             var allHeaders = self.headers
             headers?.forEach { key, value in
                 allHeaders[key] = value
@@ -90,7 +87,7 @@
         }
         
         func payTest(){
-            let productID = "com.temporary.id" // The product ID you defined in your StoreKit Configuration file
+            let productID = "com.temporary.id"
             IAPManager.shared.getProducts(productIds: Set(arrayLiteral: productID))
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 IAPManager.shared.buy(id:  productID  )
@@ -112,7 +109,6 @@
                 return
             }
             IAPManager.shared.buy(id:  product.iosIapId! )
-            // Continue with your purchase logic
         }
 
         func getProductByPrice(price: Int) -> ProductListResult? {

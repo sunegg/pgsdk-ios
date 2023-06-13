@@ -1,10 +1,3 @@
-//
-//  MenuView.swift
-//  pgsdk-ios
-//
-//  Created by TIEW SHAO YANG on 6/6/2023.
-//
-
 import SwiftUI
 
 struct MenuView: View {

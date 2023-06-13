@@ -1,9 +1,3 @@
-//  PgooView.swift
-//  pgsdk-ios
-//
-//  Created by TIEW SHAO YANG on 11/6/2023.
-//
-
 import SwiftUI
 
 struct PgooView: View {

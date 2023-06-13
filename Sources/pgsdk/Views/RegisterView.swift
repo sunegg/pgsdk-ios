@@ -63,28 +63,6 @@ struct RegisterView: View {
                     .cornerRadius(12)
             }
             .padding(.bottom, 10)
-
-//            Button(action: {
-//                // Implement your one-click registration functionality here
-//            }) {
-//                Text("一键注册")
-//                    .foregroundColor(Color.white)
-//                    .padding()
-//                    .background(Color.black)
-//                    .cornerRadius(12)
-//            }
-//            .padding(.bottom, 10)
-//
-//            Button(action: {
-//                self.presentationMode.wrappedValue.dismiss()
-//            }) {
-//                Text("返回登录")
-//                    .foregroundColor(Color.white)
-//                    .padding()
-//                    .background(Color.black)
-//                    .cornerRadius(12)
-//            }
-
         }
         .padding()
         .alert(item: $alertItem) { currentItem in

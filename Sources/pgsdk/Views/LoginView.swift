@@ -111,11 +111,8 @@ struct LoginView: View {
                         print("Authorisation failed: \(error.localizedDescription)")
                 }
             }
-            // black button
             .signInWithAppleButtonStyle(.black)
-            // white button
             .signInWithAppleButtonStyle(.white)
-            // white with border
             .signInWithAppleButtonStyle(.whiteOutline).frame(width: 200, height: 50)
         }
         .padding()

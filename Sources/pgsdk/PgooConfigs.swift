@@ -1,4 +1,4 @@
-class PgooConfigs {
+public class PgooConfigs {
     static var pgCid = "6"
     static var gameId = 2
     static var locale="zh-CN"
