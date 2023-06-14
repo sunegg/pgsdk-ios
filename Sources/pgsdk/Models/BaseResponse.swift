@@ -1,5 +1,5 @@
         public struct BaseResponse: Codable {
-            public  let code: Int?
-            public  let error: String?
-            public  let msg: String?
+           let code: Int?
+           let error: String?
+           let msg: String?
 }

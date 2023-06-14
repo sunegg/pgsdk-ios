@@ -1,6 +1,6 @@
 public struct OrderResponse: Codable {
-    public let code: Int?
-    public let msg: String?
-    public let error: String?
-    public let result: String?
+   let code: Int?
+   let msg: String?
+   let error: String?
+   let result: String?
 }
