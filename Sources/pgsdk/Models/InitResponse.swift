@@ -4,7 +4,7 @@ import Foundation
 public struct InitResponse: Codable {
     let code: Int?
     let error, msg: String?
-    let result: InitResult?
+   public let result: InitResult?
 }
 
 // MARK: - InitResult

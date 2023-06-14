@@ -2,7 +2,7 @@ public struct ProductListResponse: Codable {
       let code: Int?
       let error: String?
       let msg: String?
-      let result: [ProductListResult]?
+    public  let result: [ProductListResult]?
 }
 
 public struct ProductListResult: Codable {

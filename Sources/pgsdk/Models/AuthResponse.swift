@@ -3,7 +3,7 @@ import Foundation
 public struct AuthResponse: Codable {
     let code: Int?
     let error, msg: String?
-      let result: AuthResult?
+     public let result: AuthResult?
 
     enum CodingKeys: String, CodingKey {
         case code, error, msg, result

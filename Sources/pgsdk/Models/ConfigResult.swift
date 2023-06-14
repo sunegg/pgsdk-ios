@@ -3,7 +3,7 @@ import Foundation
 public struct ConfigResponse: Codable {
      let code: Int?
      let error, msg: String?
-     let result: ConfigResult?
+    public  let result: ConfigResult?
     enum CodingKeys: String, CodingKey {
         case code, error, msg, result
     }
