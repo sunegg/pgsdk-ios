@@ -4,18 +4,18 @@ import Combine
 public  class PgooState: ObservableObject  {
     @Published public var isShowingFloatButton = true
         
-    @Published var isShowingMenuView = false {
+    @Published public var isShowingMenuView = false {
         didSet {
             checkShowingPgooView()
         }
     }
     
-    @Published var isShowingLoginView = false {
+    @Published public var isShowingLoginView = false {
         didSet {
             checkShowingPgooView()
         }
     }
-    @Published var isShowingRealVerifyView = false {
+    @Published public var isShowingRealVerifyView = false {
         didSet {
             checkShowingPgooView()
         }
