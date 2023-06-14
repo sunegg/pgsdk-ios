@@ -3,7 +3,7 @@ import SwiftUI
 public struct FloatButton: View {
     private let circleWidth = CGFloat(60)
     @State private var dragAmount = CGPoint(x: 0, y: 150)  // circleWidth / 2 is 30
-    var body: some View {
+    public var body: some View {
         GeometryReader { geometry in
             Button(action: {
                 Pgoo.shared.state.isShowingMenuView=true

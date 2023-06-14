@@ -1,5 +1,5 @@
     import Foundation
-
+    
     public class Pgoo: PgooServiceInterface {
         
         var state = PgooState()
@@ -8,19 +8,19 @@
         var config: ConfigResult?
         var initResult: InitResult?
         var productList: [ProductListResult]?
-
+        
         static let shared = Pgoo()
-
-            private init() {
-               
-            }
-
+        
+        private init() {
+            
+        }
+        
         var headers: [String: String] = ["game_id": String(PgooConfigs.gameId), "locale": PgooConfigs.locale]
         var auth: AuthResult?
         var payUrl: String?
         var verify: Bool?
         var orderId: String?
-
+        
         func post(url: String, body: [String: Any]? = nil, headers: [String: String]? = nil, completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
             guard let url = URL(string: url) else { return }
             var request = URLRequest(url: url)
@@ -29,17 +29,17 @@
             headers?.forEach { key, value in
                 allHeaders[key] = value
             }
-
+            
             for (key, value) in allHeaders {
                 request.setValue(value, forHTTPHeaderField: key)
             }
-
+            
             if let body = body {
                 var components = URLComponents()
                 components.queryItems = body.map { URLQueryItem(name: $0.key, value: $0.value as? String) }
                 request.httpBody = components.query?.data(using: .utf8)
             }
-
+            
             let task = URLSession.shared.dataTask(with: request, completionHandler: completion)
             task.resume()
         }
@@ -50,13 +50,13 @@
                 print(String(decoding: data, as: UTF8.self))
                 let res = try decoder.decode( BaseResponse.self, from: data)
                 if (res.code != 1 && res.msg != nil){
-                print(res.msg!)
+                    print(res.msg!)
                 }
             } catch let decodeError {
                 print(decodeError)
             }
         }
-
+        
         func updateToken(_ res: AuthResponse, token: String? = nil) -> Void {
             if let result = res.result {
                 auth = result
@@ -78,10 +78,10 @@
                     self.productList=res?.result;
                     print("=====productList=====")
                     print(self.productList ?? "productList为空")
-                        let productIds = Set( self.productList!.compactMap { $0.iosIapId })
+                    let productIds = Set( self.productList!.compactMap { $0.iosIapId })
                     print("=====productIds=====")
                     print(productIds)
-                        IAPManager.shared.getProducts(productIds: productIds)
+                    IAPManager.shared.getProducts(productIds: productIds)
                 }
             }
         }
@@ -91,9 +91,9 @@
             IAPManager.shared.getProducts(productIds: Set(arrayLiteral: productID))
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 IAPManager.shared.buy(id:  productID  )
+            }
         }
-        }
-            
+        
         func pay(price: Int,
                  productName: String,
                  productDesc: String,
@@ -108,19 +108,23 @@
                 completion(false)
                 return
             }
-            IAPManager.shared.buy(id:  product.iosIapId! )
+            createOrder(order: CreateOrderRequest(productId: product.id!, payType: 4, productName: productName, productDesc: productDesc, price: String(price), serverId: serverId, serverName: serverName, roleId: roleId, roleName: roleName, attach: attach)) { (res:OrderResponse?, err) in
+                print(res!)
+                self.orderId=res?.result
+                IAPManager.shared.buy(id:  product.iosIapId!)
+            }
         }
-
+        
         func getProductByPrice(price: Int) -> ProductListResult? {
             return self.productList?.first(where: { Int($0.price ??  0) == price })
         }
-
+        
         func signOut(){
             let defaults = UserDefaults.standard
             defaults.set(nil, forKey:"token" )
             print("退出登录")
         }
-    
+        
         func login(username: String, password: String, completion: @escaping (AuthResponse?, Error?) -> Void) {
             post(url: PgooApi.login, body: ["username": username, "password": password]) { (data, response, error) in
                 if let data = data {
@@ -138,7 +142,7 @@
                 }
             }
         }
-
+        
         func register(username: String, password: String, completion: @escaping (AuthResponse?, Error?) -> Void) {
             post(url: PgooApi.register, body: ["username": username, "password": password,"pgcid":PgooConfigs.pgCid]) { (data, response, error) in
                 if let data = data {
@@ -339,5 +343,5 @@
             let payTypePart = "&payType=" + String(payType)
             return baseAndPay + orderPart + payTypePart
         }
-    
+        
     }
