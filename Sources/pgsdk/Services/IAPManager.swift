@@ -23,7 +23,6 @@ class IAPManager: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObser
         self.products = response.products
         print("=====请求商品=====")
         print(response.products)
-        // TODO: Handle the products
     }
     
     func buy(id: String){
@@ -47,15 +46,21 @@ class IAPManager: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObser
         for transaction in transactions {
             switch transaction.transactionState {
             case .purchased:
-                // TODO: Handle the successful purchase
                 print("购买成功");
-                SKPaymentQueue.default().finishTransaction(transaction)
+                guard let receiptUrl = Bundle.main.appStoreReceiptURL,
+                                  FileManager.default.fileExists(atPath: receiptUrl.path) else {
+                                return
+                            }
+                            let receiptData = try? Data(contentsOf: receiptUrl)
+                            let receiptString = receiptData?.base64EncodedString(options: [])
+                            SKPaymentQueue.default().finishTransaction(transaction)
+                Pgoo.shared.updateIosOrder(receipt: receiptString!, payOrderId: transaction.transactionIdentifier!) { (res:BaseResponse?, err) in
+                                print(res)
+                            }
             case .restored:
-                // TODO: Handle the restored purchase
                 print("恢复购买");
                 SKPaymentQueue.default().finishTransaction(transaction)
             case .failed:
-                // TODO: Handle the failed purchase
                 print("购买失败");
                 SKPaymentQueue.default().finishTransaction(transaction)
             default:

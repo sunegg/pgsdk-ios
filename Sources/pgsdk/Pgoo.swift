@@ -303,8 +303,8 @@
             }
         }
         
-        func updateGoogleOrder(purchaseToken: Int, completion: @escaping (BaseResponse?, Error?) -> Void) {
-            post(url: PgooApi.updateGoogleOrder, body: ["orderId": orderId ?? "", "purchaseToken": purchaseToken]) { (data, response, error) in
+        func updateIosOrder(receipt: String,payOrderId:String, completion: @escaping (BaseResponse?, Error?) -> Void) {
+            post(url: PgooApi.updateGoogleOrder, body: ["orderId": orderId ?? "", "receipt": receipt,"payOrderId":payOrderId]) { (data, response, error) in
                 if let data = data {
                     let decoder = JSONDecoder()
                     do {

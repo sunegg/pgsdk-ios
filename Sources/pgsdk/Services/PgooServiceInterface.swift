@@ -11,7 +11,7 @@ protocol PgooServiceInterface {
     func uploadRole(role: UploadRoleRequest, completion: @escaping (BaseResponse?, Error?) -> Void)
     func getProductList(completion: @escaping (ProductListResponse?, Error?) -> Void)
     func createOrder(order: CreateOrderRequest, completion: @escaping (OrderResponse?, Error?) -> Void)
-    func updateGoogleOrder(purchaseToken: Int, completion: @escaping (BaseResponse?, Error?) -> Void)
+    func updateIosOrder(receipt: String,payOrderId:String, completion: @escaping (BaseResponse?, Error?) -> Void)
     func fetchConfig(completion: @escaping (ConfigResponse?, Error?) -> Void)
 //    func fetchGameUrl() -> String
     func fetchPayUrl(payType: Int) -> String
