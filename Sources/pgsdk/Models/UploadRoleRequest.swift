@@ -7,4 +7,12 @@ public struct UploadRoleRequest: Codable {
      let roleName: String
      let roleType: Int
      let level: String
+    public init(serverId: String, serverName: String, roleId: String, roleName: String, roleType: Int, level: String) {
+         self.serverId = serverId
+         self.serverName = serverName
+         self.roleId = roleId
+         self.roleName = roleName
+         self.roleType = roleType
+         self.level = level
+     }
 }
