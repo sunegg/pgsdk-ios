@@ -1,5 +1,7 @@
     import Foundation
     
+    public let PG=Pgoo.shared;
+    
     public class Pgoo: PgooServiceInterface {
         
         var state = PgooState()
