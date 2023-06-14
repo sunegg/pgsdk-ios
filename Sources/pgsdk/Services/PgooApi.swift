@@ -12,7 +12,7 @@ class PgooApi {
     static let getProductList = baseUrl + "/game/getProductList"
     static let createOrder = baseUrl + "/order/createOrder"
     static let pay = baseUrl + "/game/pay"
-    static let updateGoogleOrder = baseUrl + "/order/updateGoogleOrder"
+    static let updateGoogleOrder = baseUrl + "/order/updateIosOrder"
     static let config = baseUrl + "/game/config"
     
     private init() {}
