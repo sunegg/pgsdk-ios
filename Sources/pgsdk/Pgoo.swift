@@ -339,7 +339,7 @@
             }
         }
         
-        func fetchPayUrl(payType: Int) -> String {
+        public func fetchPayUrl(payType: Int) -> String {
             let baseAndPay = PgooApi.baseUrl + PgooApi.pay
             let orderPart = "?orderId=" + (orderId ?? "defaultOrderID")
             let payTypePart = "&payType=" + String(payType)

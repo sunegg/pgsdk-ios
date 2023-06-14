@@ -1,30 +1,30 @@
-struct ProductListResponse: Codable {
-    let code: Int?
-    let error: String?
-    let msg: String?
-    let result: [ProductListResult]?
+public struct ProductListResponse: Codable {
+    public  let code: Int?
+    public  let error: String?
+    public  let msg: String?
+    public  let result: [ProductListResult]?
 }
 
-struct ProductListResult: Codable {
-    let beginCreateTime: JSONNull?
-    let createTime: String?
-    let endCreateTime: JSONNull?
-    let gameId: Int?
-    let googleIapId: String?
-    let iapId: String?
-    let id: Int?
-    let iosIapId: String?
-    let memo: String?
-    let name: String?
-    let os: Int?
-    let price: Double?
-    let status: Int?
-    let sub: Int?
-    let updateTime: String?
+public struct ProductListResult: Codable {
+    public  let beginCreateTime: JSONNull?
+    public  let createTime: String?
+    public  let endCreateTime: JSONNull?
+    public  let gameId: Int?
+    public  let googleIapId: String?
+    public  let iapId: String?
+    public  let id: Int?
+    public  let iosIapId: String?
+    public  let memo: String?
+    public  let name: String?
+    public  let os: Int?
+    public  let price: Double?
+    public  let status: Int?
+    public  let sub: Int?
+    public  let updateTime: String?
 }
 
 // For handling null values in JSON
-struct JSONNull: Codable {
+public struct JSONNull: Codable {
     public init() {}
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()

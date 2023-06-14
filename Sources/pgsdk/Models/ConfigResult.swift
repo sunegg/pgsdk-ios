@@ -1,21 +1,21 @@
 import Foundation
 // MARK: - ConfigResponse
-struct ConfigResponse: Codable {
-    let code: Int?
-    let error, msg: String?
-    let result: ConfigResult?
+public struct ConfigResponse: Codable {
+    public  let code: Int?
+    public  let error, msg: String?
+    public  let result: ConfigResult?
     enum CodingKeys: String, CodingKey {
         case code, error, msg, result
     }
 }
 
 // MARK: - ConfigResult
-struct ConfigResult: Codable {
-    let serviceTel: String?
-    let googlePay, loginNeed: Int?
-    let review: Review?
-    let serviceQq, privacyUrl, serviceWx,serviceLine: String?
-    let share: Share?
+public struct ConfigResult: Codable {
+    public  let serviceTel: String?
+    public  let googlePay, loginNeed: Int?
+    public  let review: Review?
+    public  let serviceQq, privacyUrl, serviceWx,serviceLine: String?
+    public  let share: Share?
     enum CodingKeys: String, CodingKey {
         case googlePay="google_pay"
         case review
@@ -30,11 +30,11 @@ struct ConfigResult: Codable {
 }
 
 // MARK: - Review
-struct Review: Codable {
-    let enable, time: Int?
+public struct Review: Codable {
+    public let enable, time: Int?
 }
 
 // MARK: - Share
-struct Share: Codable {
-    let text, title, url: String?
+public struct Share: Codable {
+    public  let text, title, url: String?
 }
