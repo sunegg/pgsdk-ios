@@ -2,7 +2,7 @@ import Foundation
 import Combine
 
 public  class PgooState: ObservableObject  {
-    @Published var isShowingFloatButton = true
+    @Published public var isShowingFloatButton = true
         
     @Published var isShowingMenuView = false {
         didSet {
@@ -20,7 +20,7 @@ public  class PgooState: ObservableObject  {
             checkShowingPgooView()
         }
     }
-    @Published var isShowingPgooView = false
+    @Published public var isShowingPgooView = false
 
     private var cancellableSet: Set<AnyCancellable> = []
     
