@@ -1,6 +1,6 @@
 import Foundation
 
-struct UploadRoleRequest: Codable {
+public struct UploadRoleRequest: Codable {
     let serverId: String
     let serverName: String
     let roleId: String

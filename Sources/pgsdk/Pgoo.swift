@@ -88,7 +88,7 @@
             }
         }
         
-        func payTest(){
+     public   func payTest(){
             let productID = "com.temporary.id"
             IAPManager.shared.getProducts(productIds: Set(arrayLiteral: productID))
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
@@ -96,7 +96,7 @@
             }
         }
         
-        func pay(price: Int,
+        public   func pay(price: Int,
                  productName: String,
                  productDesc: String,
                  serverId: String,
@@ -121,7 +121,7 @@
             return self.productList?.first(where: { Int($0.price ??  0) == price })
         }
         
-        func signOut(){
+        public  func signOut(){
             let defaults = UserDefaults.standard
             defaults.set(nil, forKey:"token" )
             print("退出登录")
@@ -217,7 +217,7 @@
             }
         }
         
-        func initGame(appId: String, appSecret: String, completion: @escaping (InitResponse?, Error?) -> Void) {
+        public  func initGame(appId: String, appSecret: String, completion: @escaping (InitResponse?, Error?) -> Void) {
             post(url: PgooApi.initGame, body: ["appId": appId, "appSecret": appSecret]) { (data, response, error) in
                 if let data = data {
                     let decoder = JSONDecoder()
@@ -237,7 +237,7 @@
             }
         }
         
-        func realVerify(realName: String, idNo: String, completion: @escaping (BaseResponse?, Error?) -> Void) {
+        public  func realVerify(realName: String, idNo: String, completion: @escaping (BaseResponse?, Error?) -> Void) {
             post(url: PgooApi.realVerify, body: ["realName": realName, "idNo": idNo]) { (data, response, error) in
                 if let data = data {
                     let decoder = JSONDecoder()
@@ -254,7 +254,7 @@
             }
         }
         
-        func uploadRole(role: UploadRoleRequest, completion: @escaping (BaseResponse?, Error?) -> Void) {
+        public    func uploadRole(role: UploadRoleRequest, completion: @escaping (BaseResponse?, Error?) -> Void) {
             post(url: PgooApi.uploadRole, body: ["serverId": role.serverId, "serverName": role.serverName, "roleId": role.roleId,"roleName": role.roleName,"roleType":String(role.roleType),"level": role.level]) { (data, response, error) in
                 if let data = data {
                     let decoder = JSONDecoder()

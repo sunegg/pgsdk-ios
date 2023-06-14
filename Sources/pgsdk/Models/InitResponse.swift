@@ -1,14 +1,14 @@
 import Foundation
 
 // MARK: - InitResponse
-struct InitResponse: Codable {
+public struct InitResponse: Codable {
     let code: Int?
     let error, msg: String?
     let result: InitResult?
 }
 
 // MARK: - InitResult
-struct InitResult: Codable {
+public struct InitResult: Codable {
     let androidIndexUrl, androidLink, appId, appSecret: String?
     let config: String?
     let createTime: String?
