@@ -4,14 +4,14 @@
     
     public class Pgoo: PgooServiceInterface {
         
-        var state = PgooState()
+        public var state = PgooState()
         
         var realVerify: Int?
         var config: ConfigResult?
         var initResult: InitResult?
         var productList: [ProductListResult]?
         
-        static let shared = Pgoo()
+        public static let shared = Pgoo()
         
         private init() {
             

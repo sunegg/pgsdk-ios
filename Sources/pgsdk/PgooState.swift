@@ -1,7 +1,7 @@
 import Foundation
 import Combine
 
-class PgooState: ObservableObject  {
+public  class PgooState: ObservableObject  {
     @Published var isShowingFloatButton = true
         
     @Published var isShowingMenuView = false {
